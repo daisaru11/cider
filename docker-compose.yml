@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  api:
+    build: api
+  scheduler:
+    build: schedular
+  worker:
+    build: worker
+  main-db:
+    build: infrastructure-dev/main-db
+    expose:
+      - '5432'
+    volumes:
+      - ./infrastructure-dev/main-db/volume/data:/var/lib/postgresql/data
+  redis:
+    build: infrastructure-dev/redis
